@@ -1,0 +1,175 @@
+.date{
+    font-family: 'SackersGothicStd-Medium', sans-serif;
+    font-size: 12px;
+    line-height: initial;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    font-weight: normal;
+    color: #bdb3a2;
+    text-align: center;
+    }
+    .name{
+    font-family: 'SackersGothicStd-Medium', sans-serif;
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    font-weight: normal;
+    color: #bdb3a2;
+    text-align: center;
+    }
+    .title { 
+      background: #eef0ef;
+      text-align: center;  
+      color:#454545;
+      padding: 15px 0px 15px 0px;
+      font-family: 'SackersGothicStd-Medium';
+      letter-spacing: 2px;
+    
+    }
+    .title-welcome { 
+      background: #eef0ef;   
+      color:#454545;
+      padding: 15px 0 15px 50px;   
+      font-size: 15px;
+      line-height: 23px;
+      font-family: 'SackersGothicStd-Medium';
+      letter-spacing: 2px;
+     
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    }
+    .card img {
+      padding:10px
+    }
+    .card {
+      background: FloralWhite;
+      
+    }
+    
+        .section{
+          text-align: center;
+          background: white;
+          margin: 5%;
+          padding: 5%;
+          border: 10px solid rgba(255, 255, 255, 0.6); 
+          -moz-background-clip: padding; 
+          -webkit-background-clip: padding; 
+          background-clip: padding-box; 
+        }
+    
+    .nextBtns {
+        background-color: #bdb3a2;   
+        height: 50px;
+        width: 50px;
+        display:block;
+        border-radius: 50%;
+        color: white;
+        border: none;
+        opacity: 0.9;
+        right: 5%; 
+        bottom: 5%;   
+        position: fixed;
+    }
+    .nextBtns:hover{
+      background: #434343;
+      letter-spacing: 1px;
+      -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+      -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+      box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+      transition: all 0.4s ease 0s;
+    
+    }
+    .menuBtn {
+        background-color: #bdb3a2;   
+        height: 50px;
+        width: 50px;
+        display:block;
+        border-radius: 50%;
+        color: white;
+        border: none;
+        opacity: 0.9;
+        left: 5%; 
+        bottom: 5%;   
+        position: fixed;
+    }
+     .welcome-title {
+      font-family: 'SackersGothicStd-Medium', sans-serif;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-variant: normal;
+    -webkit-font-smoothing: antialiased;
+    font-weight: normal;
+    color: #bdb3a2;
+    margin-top: 20px;
+    margin-bottom: 10px;
+     }
+     .welcome-txt{
+      font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #222;
+     }
+     .padding-nav{
+      padding-top: 70px;
+     }
+    
+     .travel-header{
+        font-weight: 600;
+      margin-bottom: 0;
+      margin-left: 8vw;
+      margin-right: 8vw;
+      overflow-wrap: break-word;
+    font-size: 16px;
+     }
+     .travel-txt{
+      margin-bottom: 0;
+      margin-left: 8vw;
+      margin-right: 8vw;
+     }
+     .travel-link {
+      margin-bottom: 0;
+      margin-left: 8vw;
+      margin-right: 8vw;
+      color: black;
+      text-decoration: underline;
+     }
+    
+      .story-modal{
+        color: white;
+        margin-top: 1em;
+        margin-bottom: 0px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+    
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+      .closeModalBtn {
+        background-color: #bdb3a2;   
+        height: 30px;
+        width: 30px;
+        display:block;
+        border-radius: 50%;
+        color: white;
+        border: none;
+        opacity: 0.5;
+        right: 5%; 
+        top: 1%;   
+        position: fixed;
+    }
+    .borderless td, .borderless th {
+        border: none;
+    }
+    .backgroundWeddingDesk{
+      /* background: url(..\..\image\background.jpg) no-repeat center center fixed;  */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #454545;
+    background-size: 100% 100%;
+    }
