@@ -5,8 +5,8 @@ import SignUp from '@/components/Wedding/SignUp'
 import SignIn from '@/components/Wedding/SignIn'
 import RSVP from '@/components/Wedding/RSVP'
 // blog
-// import layout from "@/components/blog/layout";
-// import index from "@/components/blog/index";
+  import layout from "@/components/Blog/layout";
+  import index from "@/components/Blog/index";
 // import page from "@/components/blog/page";
 // import category from "@/components/blog/category";
 // import contact from "@/components/blog/contact";
@@ -55,14 +55,14 @@ if(window.mobilecheck()){
     Gallery = GalleryMobile; 
 }
   const routes = [
-   // {
-    //   path: '',       
-    //   component: layout,
-    //   children: [
-    //     {
-    //       path: '/',
-    //       component: index,
-    //     },
+   {
+      path: '',       
+      component: layout,
+      children: [
+        {
+          path: '/',
+          component: index,
+        },
     //     {
     //       path: '/index',
     //       component: index,
@@ -83,8 +83,8 @@ if(window.mobilecheck()){
     //       path: '/about',
     //       component: about,
     //     },
-    //   ]
-    // },
+      ]
+    },
 
     {
       path: '/note',      
