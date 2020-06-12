@@ -7,10 +7,10 @@ import RSVP from '@/components/Wedding/RSVP'
 // blog
   import layout from "@/components/Blog/layout";
   import index from "@/components/Blog/index";
-// import page from "@/components/blog/page";
-// import category from "@/components/blog/category";
-// import contact from "@/components/blog/contact";
-// import about from "@/components/blog/about";
+  import page from "@/components/Blog/page";
+// import category from "@/components/Blog/category";
+// import contact from "@/components/Blog/contact";
+// import about from "@/components/Blog/about";
  import note from "@/components/Blog/note";
 // blog
 import Cover from '@/components/Cover'
@@ -67,10 +67,10 @@ if(window.mobilecheck()){
     //       path: '/index',
     //       component: index,
     //     },
-    //     {
-    //       path: '/page/:slug',
-    //       component: page,
-    //     },
+        {
+          path: '/page/:slug',
+          component: page,
+        },
     //     {
     //       path: '/category',
     //       component: category,
@@ -88,7 +88,19 @@ if(window.mobilecheck()){
 
     {
       path: '/note',      
-      component: note
+      component: note,
+      beforeEnter: (to, from, next) => {
+        firebase.auth().onAuthStateChanged(userAuth => {
+          if(userAuth){
+            next();
+          }else{
+            next({
+              path: '#',
+            })
+          }
+          
+        }) 
+      }
     },
 
     {

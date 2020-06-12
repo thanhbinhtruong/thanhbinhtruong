@@ -15,23 +15,28 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <router-link to="/wedding/cover">
-                  <a class="nav-link" href="#">COVER</a>
+            <router-link to="#">
+                  <a class="nav-link" href="#">CODING</a>
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/wedding/cover">
-                  <a class="nav-link" href="#">COVER</a>
+            <router-link to="#">
+                  <a class="nav-link" href="#">SERVER</a>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="#">
+                  <a class="nav-link" href="#">HACKING</a>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="#">
+                  <a class="nav-link" href="#">WEDDING</a>
             </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/note">
                   <a class="nav-link" href="#">NOTE</a>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/wedding">
-                  <a class="nav-link" href="#">WEDDING</a>
             </router-link>
           </li>
 
@@ -41,25 +46,29 @@
     </nav>
   <router-view />
 
-    <footer style="border-top:1px solid #e5e5e5; padding:20px">
+    <footer style="border-top:1px solid #e5e5e5;">
+      <br><br>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <div style="font-weight:bold">Logo</div><br>
-                    <img class="img-fluid"   src="@/image/blog/logo.png"/> <br>
-                    <span class="fa fa-instagram"></span>
-                    <span class="fa fa-facebook"></span>
-                    <span class="fa fa-youtube"></span>
+                    <div style="font-weight:bold">LOGO</div><br>
+                    <img style="border:1px solid black" class="img-fluid"   src="@/image/blog/logo.png"/> <br><br>
+                    <span class="fa fa-instagram" style="font-size:25px"></span>
+                    <span class="fa fa-facebook" style="padding-left:20px; font-size:25px"></span>
+                    <span class="fa fa-youtube" style="padding-left:20px; font-size:25px"></span> <br> <br>
+                    <span>© <a href="https://thanhbinhtruong.com">ThanhBinh Truong</a> 2020</span>
+                <br> <br>    
                 </div>
                 <div class="col-sm-4">
-                    <div style="font-weight:bold">Bài Viết Mới Nhất</div><br>
+                    <div style="font-weight:bold">BÀI VIẾT MỚI NHẤT</div><br>
                     <div>5 BƯỚC ĐỂ BỚT NHỎ NHEN | Vlog | Giang Ơi</div><br>
                     <div>5 BƯỚC ĐỂ BỚT NHỎ NHEN | Vlog | Giang Ơi</div><br>
                     <div>5 BƯỚC ĐỂ BỚT NHỎ NHEN | Vlog | Giang Ơi</div>
-
+                <br><br>
                 </div>
+                <br> <br>
                 <div class="col-sm-4">
-                      <div style="font-weight:bold">Nhận Thông Báo</div><br>
+                      <div style="font-weight:bold">NHẬN THÔNG BÁO</div><br>
                       <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Your Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">

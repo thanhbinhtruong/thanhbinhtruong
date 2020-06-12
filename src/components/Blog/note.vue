@@ -1,10 +1,92 @@
 <template>
     <div class="container">
-      <label>Your Note</label>
-      <div class="row">
-       
-        <div class="col-md-6">
+      <div style="text-align:center">
+        <div>Your Cash</div>
+        <div style="font-weight:bold">-335,000.00 đ</div>
+      </div>
+      <div style="text-align:center">
+        <label>This Month</label>
+      </div>
 
+      <div class="container" style="border:1px solid green; border-radius:5px">
+      <div class="row">
+        <div class="col">First Balance</div>
+        <div class="col" style="text-align:right">{{ formatMoney(firstBalance) }}đ</div>
+      </div>
+      <div class="row">
+        <div class="col">Last Balance</div>
+        <div class="col" style="text-align:right">- {{ formatMoney(lastBalance) }} đ</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col" style="text-align:right">{{ balance }} đ</div>
+      </div>
+      <div style="text-align:center;"><a style="color:green"  href="#">Report of this month</a></div>
+      </div>
+      <br>
+
+
+
+       
+
+        
+    
+    <swipe-list
+    ref="list"
+    class="card"
+    :disabled="!enabled"
+    :items="notes"
+    item-key="id"
+    :threshold='3'
+    @swipeout:click="itemClick"  
+>
+    <template v-slot="{ item, index, revealLeft, revealRight, close }">
+         
+        <div class="card-content" style="text-align:left">
+            <p>{{formatTime(item.data().created_at) }}</p>
+            <p><span style="font-weight:bold">Money:</span> {{ formatMoney(item.data().money) }} đ</p>
+            <p><span style="font-weight:bold">Content:</span> {{ item.data().content }}</p>
+            <p><span style="font-weight:bold">Category:</span> {{ item.data().category }}</p>
+            <p v-show="false">{{ item.id }}</p>
+            <p v-show="false">{{ index }}</p>
+        </div>
+    </template>
+    <template v-slot:right="{ item }">
+        <div class="swipeout-action blue" @click="getIdUpdate(item.id)" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-edit"></i>
+        </div>
+        <div @click="del(item.id)" class="swipeout-action green">
+            <i class="fa fa-trash"></i>
+            
+        </div>
+    </template>
+    
+
+    <template v-slot:empty>
+        <div>
+            list is empty ( filtered or just empty )
+        </div>
+    </template>
+
+</swipe-list>
+
+
+<!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+        <div class="col-md-6">
             <div class="form-group row">
               <label for="staticEmail" class="col-sm-2 col-form-label">Note: </label>
               <div class="col-sm-10">
@@ -63,68 +145,6 @@
 
         </div>
       </div>
-
-
-
-       
-
-        
-    
-    <swipe-list
-    ref="list"
-    class="card"
-    :disabled="!enabled"
-    :items="notes"
-    item-key="id"
-    :threshold='3'
-    @swipeout:click="itemClick"  
->
-    <template v-slot="{ item, index, revealLeft, revealRight, close }">
-         
-        <div class="card-content" style="text-align:left">
-            <p>{{ item.data().created_at }}</p>
-            <p><span style="font-weight:bold">Money:</span> {{ item.data().money }}</p>
-            <p><span style="font-weight:bold">Content:</span> {{ item.data().content }}</p>
-            <p><span style="font-weight:bold">Category:</span> {{ item.data().category }}</p>
-            <p v-show="false">{{ item.id }}</p>
-            <p v-show="false">{{ index }}</p>
-        </div>
-    </template>
-    <template v-slot:right="{ item }">
-        <div class="swipeout-action blue" @click="getIdUpdate(item.id)" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-edit"></i>
-        </div>
-        <div @click="del(item.id)" class="swipeout-action green">
-            <i class="fa fa-trash"></i>
-            
-        </div>
-    </template>
-    
-
-    <template v-slot:empty>
-        <div>
-            list is empty ( filtered or just empty )
-        </div>
-    </template>
-
-</swipe-list>
-
-
-<!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Edit</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <textarea v-model="contentUpdate" class="form-control"></textarea>
-           
         </div>
         
         <!-- Modal footer -->
@@ -143,6 +163,7 @@
 
 <script>
 import firebase from 'firebase';
+import moment from 'moment'
 import { SwipeList, SwipeOut } from 'vue-swipe-actions';
 import 'vue-swipe-actions/dist/vue-swipe-actions.css';
 export default {
@@ -161,24 +182,38 @@ export default {
           money:'',
           moneyDisplay: '',
           category: '',
+          firstBalance: '10000000',
+          lastBalance: '300000',
+          balance: (this.firstBalance - this.lastBalance)
     }
   },
 
   created(){
+    
         this.getNotes();
     },
     watch: {
 
     money: function (val) {
       if(0 < val.length){
-      this.moneyDisplay = (parseInt(this.money)).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');  // 12,345.67
+      this.moneyDisplay = (parseInt(this.money)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');  // 12,345.67
       }else{
         this.moneyDisplay = '';
       }
     },
+    
 
   },
   methods : {
+    formatTime(time){
+      return moment.unix(time).format("YYYY/MM/DD HH:mm:ss");
+    },
+
+    formatMoney(money){
+      if(0 < money.length){
+      return (parseInt(money)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+      }
+    },
     clear : function(){
           this.content = '';
           this.contentUpdate = '';
@@ -238,7 +273,7 @@ export default {
             content: this.content,
             category: this.category,
             money: this.money,
-            created_at: new Date().getTime()
+            created_at: moment().unix()
           })
           .then(function() {
               console.log("Document successfully written!");
