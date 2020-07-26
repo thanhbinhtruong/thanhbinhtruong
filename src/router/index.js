@@ -68,7 +68,7 @@ if(window.mobilecheck()){
     //       component: index,
     //     },
         {
-          path: '/page/:slug',
+          path: '/blog/:slug',
           component: page,
         },
     //     {

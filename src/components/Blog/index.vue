@@ -3,7 +3,7 @@
      <div class="row" style="padding-top:80px">
             <div class="col-md-8">
                 <div style=" margin:20px">
-                <router-link style="color:black; text-decoration:none" :to=" 'page/' + 'huong-dan-fucking'">
+                <router-link style="color:black; text-decoration:none" :to=" 'blog/' + 'huong-dan-fucking'">
                 <img class="img-fluid" src="@/image/blog/11-mẹo-JavaScript-696x522.png" />
                 <h3>NGHỀ TELESALES – NHỮNG ĐIỀU CÓ THỂ BẠN CHƯA BIẾT</h3>
                 </router-link>

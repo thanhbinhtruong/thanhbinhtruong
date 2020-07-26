@@ -305,7 +305,11 @@ export default {
 
       itemClick(e) {
       console.log(e.id, "item click");
-    },  
+    }, 
+    
+    getCategory() {
+      
+    }, 
 
   }
  
